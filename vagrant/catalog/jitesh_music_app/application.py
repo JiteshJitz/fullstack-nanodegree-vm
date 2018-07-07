@@ -51,8 +51,6 @@ def getUserID(email):
 
 @app.route('/')
 @app.route('/catalog')
-
-
 def showCategories():
     categories = session.query(Category).all()
     categoryItems = session.query(CategoryItem).all()
@@ -261,7 +259,7 @@ def fbconnect():
     login_session['access_token'] = stored_token
 
     # Get user picture
-    url = 'https://graph.facebook.com/v2.4/me/picture?%s&redirect=0&height=200&width=200' % token
+    url = 'https://graph.facebook.com/v2.4/me/picture?%s&redirect=0' % token
     h = httplib2.Http()
     result = h.request(url, 'GET')[1]
     data = json.loads(result)
